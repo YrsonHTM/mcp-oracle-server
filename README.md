@@ -62,8 +62,44 @@ El servidor se ejecutará y estará listo para recibir comandos MCP por stdio.
 - **describe_table**: Describe la estructura de una tabla.
 - **list_tables**: Lista todas las tablas disponibles para el usuario.
 
+## Ejemplo de uso en Cursor
+
+Puedes integrar este servidor con [Cursor](https://www.cursor.so/) para interactuar con tu base de datos Oracle desde la propia interfaz de Cursor.
+
+### 1. Configura el archivo `mcp.json`
+Crea (o edita) el archivo `mcp.json` en la ruta `c:\Users\<TU_USUARIO>\.cursor\mcp.json` (en Windows) o `~/.cursor/mcp.json` (en Linux/Mac). Ejemplo de configuración:
+
+```json
+{
+  "mcpServers": {
+    "oracle-db": {
+      "command": "node",
+      "args": ["RUTA_DONDE_INSTALA_EL_SERVER"],
+      "env": {
+        "ORACLE_HOST": "HOST_SERVER: EJ:10.10.10.10",
+        "ORACLE_PORT": "PRT: EJ:1521",
+        "ORACLE_DATABASE": "NOMBRE_BASE_DATOS: EJ:pruebadb",
+        "ORACLE_USER": "NOMBRE_USUARIO: EJ:admin",
+        "ORACLE_PASSWORD": "CONTRASEÑAñ EJ:1234"
+      }
+    }
+  }
+}
+```
+
+- Cambia las rutas y credenciales según tu entorno y base de datos.
+- Asegúrate de que la ruta a `server.js` sea la correcta.
+
+### 2. Agrega el servidor MCP en Cursor
+- Abre Cursor.
+- Ve a la configuración de MCP (Model Context Protocol).
+- Haz clic en "Agregar servidor MCP" y selecciona el nombre que configuraste (por ejemplo, `oracle-db`).
+- Inicia el servidor desde Cursor o manualmente con `npm start`.
+
+### 3. Usa las herramientas desde Cursor
+Ahora puedes ejecutar consultas, describir tablas y listar tablas directamente desde la interfaz de Cursor usando el servidor MCP que configuraste.
+
 ## Notas
-- **No subas la carpeta `node_modules` al repositorio**. Ya está excluida por `.gitignore`.
 - El servidor solo permite consultas SELECT para evitar modificaciones accidentales en la base de datos.
 - Si tienes problemas con la conexión Oracle, revisa que las variables de entorno estén correctamente configuradas.
 
