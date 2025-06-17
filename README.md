@@ -21,31 +21,13 @@ Este proyecto es un **servidor Node.js** que expone herramientas para interactua
 ## Instalación
 1. **Clona el repositorio:**
    ```sh
-   git clone <URL_DEL_REPOSITORIO>
+   git clone https://github.com/YrsonHTM/mcp-oracle-server.git
    cd mcp-oracle-server
    ```
 
 2. **Instala las dependencias:**
    ```sh
    npm install
-   ```
-
-3. **Configura las variables de entorno:**
-   Puedes crear un archivo `.env` o exportarlas en tu terminal:
-   ```sh
-   export ORACLE_USER=tu_usuario
-   export ORACLE_PASSWORD=tu_contraseña
-   export ORACLE_HOST=host.oracle.com
-   export ORACLE_PORT=1521
-   export ORACLE_DATABASE=servicio
-   ```
-   En Windows PowerShell:
-   ```powershell
-   $env:ORACLE_USER="tu_usuario"
-   $env:ORACLE_PASSWORD="tu_contraseña"
-   $env:ORACLE_HOST="host.oracle.com"
-   $env:ORACLE_PORT="1521"
-   $env:ORACLE_DATABASE="servicio"
    ```
 
 ## Uso
@@ -74,7 +56,7 @@ Crea (o edita) el archivo `mcp.json` en la ruta `c:\Users\<TU_USUARIO>\.cursor\m
   "mcpServers": {
     "oracle-db": {
       "command": "node",
-      "args": ["RUTA_DONDE_INSTALA_EL_SERVER"],
+      "args": ["RUTA_DONDE_INSTALA_EL_SERVER: EJ: C:\\mcp-oracle-server\\server.js"],
       "env": {
         "ORACLE_HOST": "HOST_SERVER: EJ:10.10.10.10",
         "ORACLE_PORT": "PRT: EJ:1521",
